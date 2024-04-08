@@ -1,5 +1,24 @@
 local plugins = {
-{
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = "kevinhwang91/promise-async",
+    init = function()
+      -- Basic Neovim fold settings
+      vim.o.foldcolumn = '1' -- '0' is also a valid option, depending on preference
+      vim.o.foldlevel = 99 -- This needs to be a large value to ensure all folds are open by default
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      -- Setup nvim-ufo
+      require('ufo').setup({
+        provider_selector = function(bufnr, filetype, buftype)
+          -- Specify which providers to use. Can be a list ordered by priority.
+          return {'lsp', 'indent'}
+        end
+      })
+    end
+  },
+  {
     "imtaketa/git-worktree.nvim",
     requires = "nvim-lua/plenary.nvim", -- git-worktree.nvim depends on plenary.nvim
     config = function()
