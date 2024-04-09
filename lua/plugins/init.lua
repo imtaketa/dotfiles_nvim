@@ -271,3 +271,5 @@ end
 --     end,
 -- })
 require("lazy").setup(default_plugins, config.lazy_nvim)
+vim.wo.number = true
+vim.wo.relativenumber = true
