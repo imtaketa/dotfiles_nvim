@@ -51,6 +51,12 @@ local plugins = {
         path = "~/vaults/work",
       },
     },
+  ---@param url string
+  follow_url_func = function(url)
+    -- Open the URL in the default web browser.
+    -- vim.fn.jobstart({"open", url})  -- Mac OS
+    vim.fn.jobstart({"xdg-open", url})  -- linux
+  end,
   new_notes_location = "notes_subdir",
       -- Custom function for generating note IDs
       note_id_func = function(title)

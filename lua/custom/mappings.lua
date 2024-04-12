@@ -88,6 +88,10 @@ M.obsidian = {
       ":ObsidianYesterday<CR>",
       "Open yesterday's note",
     },
+    ["<leader>oll"] = {
+      ":ObsidianLinks<CR>",
+      "Open links",
+    },
 
   },   -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
   v = {
