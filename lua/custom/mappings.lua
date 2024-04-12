@@ -44,10 +44,6 @@ M.obsidian = {
       ":ObsidianQuickSwitch<CR>",
       "Quick switch",
     },
-    ["<leader>oll"] = {
-      ":ObsidianLink<CR>",
-      "Insert link",
-    },
     ["<leader>oln"] = {
       ":ObsidianLinkNew<CR>",
       "Insert new link",
@@ -98,6 +94,14 @@ M.obsidian = {
     ["<leader>oe"] = {
       ":ObsidianExtractNote<CR>",
       "Extract note",
+    },
+    ["<leader>oli"] = {
+      ":ObsidianLink<CR>",
+      "Insert link",
+    },
+    ["<leader>oln"] = {
+      ":ObsidianLinkNew<CR>",
+      "Insert new link",
     },
 
   },
