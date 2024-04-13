@@ -1,5 +1,12 @@
 local plugins = {
   {
+    "azabiong/vim-highlighter",
+    lazy = false,
+    init = function()
+      -- settings
+    end,
+  },
+  {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
     init = function()
