@@ -1,4 +1,40 @@
 local M = {}
+M.harpoon = {
+  n = {
+    ["<C-e>"] = {
+      function() 
+        local harpoon = require("harpoon")
+        harpoon.ui:toggle_quick_menu(harpoon:list()) 
+      end,
+      "Open harpoon window",
+    },
+    ["<leader>a"] = {
+      function()
+        require("harpoon"):list():add()
+      end,
+      "Add file to harpoon",
+    },
+-- vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+    ["<C-t>"] = {
+      function()
+        require("harpoon"):list():select(1)
+      end,
+      "Select first harpoon entry",
+    },
+    ["<M-o>"] = {
+      function()
+        require("harpoon"):list():prev()
+      end,
+      "Previous harpoon buffer",
+    },
+    ["<M-i>"] = {
+      function()
+        require("harpoon"):list():next()
+      end,
+      "Next harpoon buffer",
+    },
+},
+}
 
 M.worktree = {
 n = {

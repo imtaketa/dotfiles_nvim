@@ -1,4 +1,17 @@
 local plugins = {
+{
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+        require("core.utils").load_mappings("harpoon")
+        local harpoon = require("harpoon")
+
+        harpoon:setup() 
+        local harpoon = require('harpoon')
+        harpoon:setup({})
+    end
+},
   {
     "azabiong/vim-highlighter",
     lazy = false,
@@ -129,10 +142,10 @@ api_key = vim.fn.getenv("CHATGPT_API_KEY"),
     },
   },
   {"szw/vim-maximizer",
-lazy = false,
-config = function()
-  require("core.utils").load_mappings("maximizer")
-end
+    lazy = false,
+    config = function()
+      require("core.utils").load_mappings("maximizer")
+    end
   },
  {
   "christoomey/vim-tmux-navigator",
