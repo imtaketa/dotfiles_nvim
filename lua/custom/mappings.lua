@@ -8,26 +8,26 @@ M.harpoon = {
       end,
       "Open harpoon window",
     },
-    ["<leader>a"] = {
+    ["<leader>h"] = {
       function()
         require("harpoon"):list():add()
       end,
       "Add file to harpoon",
     },
 -- vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-    ["<C-t>"] = {
+    ["<C-a>"] = {
       function()
         require("harpoon"):list():select(1)
       end,
       "Select first harpoon entry",
     },
-    ["<M-o>"] = {
+    ["<M-S-O>"] = {
       function()
         require("harpoon"):list():prev()
       end,
       "Previous harpoon buffer",
     },
-    ["<M-i>"] = {
+    ["<M-S-I>"] = {
       function()
         require("harpoon"):list():next()
       end,
@@ -347,15 +347,36 @@ M.maximizer = {
 }
 
 M.copilot = {
-  i = {
-    ["<C-a>"] = {
-      function()
-        vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
-      end,
-      "Copilot Accept",
-       {replace_keycodes = true, nowait=true, silent=true, expr=true, noremap=true}
-      }
-  }
+  -- i = {
+  --   ["<C-a>"] = {
+  --     function()
+  --       vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
+  --     end,
+  --     "Copilot Accept",
+  --      {replace_keycodes = true, nowait=true, silent=true, expr=true, noremap=true}
+  --     }
+  -- }
+}
+
+M.copilot_chat = {
+ n = {  -- 'n' for normal mode mappings
+    ["<leader>ae"] = { "<cmd>CopilotChatExplain<CR>", "AI Explain" },
+    ["<leader>ar"] = { "<cmd>CopilotChatReview<CR>", "AI Review" },
+    ["<leader>at"] = { "<cmd>CopilotChatTests<CR>", "AI Tests" },
+    ["<leader>af"] = { "<cmd>CopilotChatFix<CR>", "AI Fix" },
+    ["<leader>ao"] = { "<cmd>CopilotChatOptimize<CR>", "AI Optimize" },
+    ["<leader>ad"] = { "<cmd>CopilotChatDocs<CR>", "AI Documentation" },
+    ["<leader>ac"] = { "<cmd>CopilotChatCommitStaged<CR>", "AI Generate Commit" }
+  },
+ v = {  -- 'n' for normal mode mappings
+    ["<leader>ae"] = { "<cmd>CopilotChatExplain<CR>", "AI Explain" },
+    ["<leader>ar"] = { "<cmd>CopilotChatReview<CR>", "AI Review" },
+    ["<leader>at"] = { "<cmd>CopilotChatTests<CR>", "AI Tests" },
+    ["<leader>af"] = { "<cmd>CopilotChatFix<CR>", "AI Fix" },
+    ["<leader>ao"] = { "<cmd>CopilotChatOptimize<CR>", "AI Optimize" },
+    ["<leader>ad"] = { "<cmd>CopilotChatDocs<CR>", "AI Documentation" },
+    ["<leader>ac"] = { "<cmd>CopilotChatCommitStaged<CR>", "AI Generate Commit" }
+  },
 }
 M.dap = {
   plugin = true,

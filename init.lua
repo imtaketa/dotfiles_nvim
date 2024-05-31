@@ -23,3 +23,11 @@ vim.api.nvim_set_keymap('n', '<M-j>', ':echo "Meta Key Test"<CR>', {noremap = tr
 vim.api.nvim_set_keymap('n', '<C-p>', '<C-i>', {noremap = true, silent = true})
 vim.opt.conceallevel = 1
 require "plugins"
+require("CopilotChat").setup {
+  debug = true, -- Enable debugging
+  -- See Configuration section for rest
+}
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.tmpl",
+  command = "set filetype=gotmpl",
+})

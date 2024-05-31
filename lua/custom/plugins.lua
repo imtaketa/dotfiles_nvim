@@ -74,8 +74,8 @@ local plugins = {
   ---@param url string
   follow_url_func = function(url)
     -- Open the URL in the default web browser.
-    -- vim.fn.jobstart({"open", url})  -- Mac OS
-    vim.fn.jobstart({"xdg-open", url})  -- linux
+    vim.fn.jobstart({"open", url})  -- Mac OS
+    -- vim.fn.jobstart({"xdg-open", url})  -- linux
   end,
   new_notes_location = "notes_subdir",
       -- Custom function for generating note IDs
@@ -159,10 +159,61 @@ api_key = vim.fn.getenv("CHATGPT_API_KEY"),
     vim.g.copilot_no_tab_map = true;
     vim.g.copilot_assume_mapped = true;
     vim.g.copilot_tab_fallback = "";
+
   -- The mapping is set to other key, see custom/lua/mappings
   -- or run <leader>ch to see copilot mapping section
   end
 },
+{
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    },
+    config = function()
+      require("core.utils").load_mappings("copilot_chat")
+      vim.g.copilot_no_tab_map = false
+      vim.g.copilot_hide_during_completion = 0
+      vim.g.copilot_proxy_strict_ssl = 0
+      vim.keymap.set('i', '<M-Tab>', 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
+    end,
+    opts = {
+      debug = true, -- Enable debugging
+      -- See Configuration section for rest
+-- prompts = {
+--         Explain = {
+--             mapping = '<leader>ae',
+--             description = 'AI Explain',
+--         },
+--         Review = {
+--             mapping = '<leader>ar',
+--             description = 'AI Review',
+--         },
+--         Tests = {
+--             mapping = '<leader>at',
+--             description = 'AI Tests',
+--         },
+--         Fix = {
+--             mapping = '<leader>af',
+--             description = 'AI Fix',
+--         },
+--         Optimize = {
+--             mapping = '<leader>ao',
+--             description = 'AI Optimize',
+--         },
+--         Docs = {
+--             mapping = '<leader>ad',
+--             description = 'AI Documentation',
+--         },
+--         CommitStaged = {
+--             mapping = '<leader>ac',
+--             description = 'AI Generate Commit',
+--         },
+--     },
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
   {
     "mfussenegger/nvim-dap",
     init = function()
